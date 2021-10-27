@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-//Youtube Tutorial Link https://youtu.be/LyoHCAgbDcw
+//Youtube Tutorials Link : https://www.youtube.com/playlist?list=PLLH3mUGkfFCU5D0nT9dsN2-RYh1XjnHgH
 //Original Script Ownder : N3K EN , https://www.youtube.com/channel/UCtQPCnbIB7SP_gM1Xtv8bDQ
 
 public class MenuScene : MonoBehaviour
@@ -49,6 +49,7 @@ public class MenuScene : MonoBehaviour
         foreach (Transform t in ShopPanel)
         {
             int currentIndex = i;
+
             Button b = t.GetComponent<Button>();
             b.onClick.AddListener(() => OnWrenchSelect(currentIndex));
             i++;
