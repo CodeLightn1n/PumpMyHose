@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     Scene CurrentScene, Level1, Level2, Level3;
     private void Start()
     {
-        grid = GameObject.Find("GridManager").GetComponent<GridManager>();
+        grid = FindObjectOfType<GridManager>();
         CurrentScene = SceneManager.GetActiveScene();
         Level1 = SceneManager.GetSceneByBuildIndex(1);
         SetGrid();
@@ -22,5 +22,6 @@ public class GameManager : MonoBehaviour
         {
             grid.SetGridSize(5, 5, 1);
         }
+        Debug.Log(transform.position);
     }
 }
