@@ -15,8 +15,8 @@ public class GridManager : MonoBehaviour
     public GameObject GridSpace;
     private void Start()
     {
-        StartX = this.gameObject.transform.position.x;
-        StartY = this.gameObject.transform.position.y;
+        
+        
     }
     public void SetGridSize(int length, int height, float spacing)
     {
@@ -24,6 +24,8 @@ public class GridManager : MonoBehaviour
         Height = height;
         SpaceX = spacing;
         SpaceY = spacing;
+        StartX = this.gameObject.transform.position.x;
+        StartY = this.gameObject.transform.position.y;
         InstantiateGrid();
     }
     //creates grid using gameobjects
