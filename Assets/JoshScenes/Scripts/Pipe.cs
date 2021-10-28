@@ -8,13 +8,10 @@ public class Pipe : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (HasPlaced && collision.gameObject.name =="GridSpace(Clone)")
+        
+        if (HasPlaced && collision.gameObject.name == "GridSpace")
         {
             this.gameObject.transform.position = collision.gameObject.transform.position;
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.gameObject.name);
     }
 }
