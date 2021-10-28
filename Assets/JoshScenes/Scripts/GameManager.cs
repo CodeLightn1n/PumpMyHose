@@ -20,8 +20,9 @@ public class GameManager : MonoBehaviour
         //Setting grid sizes based on the level
         if(CurrentScene == Level1)
         {
-            grid.SetGridSize(5, 5, 1);
+            //gridsize components in order : Length, Height, Spacing, StartPipeGridSpaceNumber, EndPipeGridSpaceNumber
+            grid.SetGridSize(5, 5, 1, 2, 20);
         }
-        Debug.Log(transform.position);
+        Debug.Log("GameManager's Position : " + transform.position);
     }
 }
