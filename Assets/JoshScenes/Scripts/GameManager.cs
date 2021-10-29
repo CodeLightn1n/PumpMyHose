@@ -25,4 +25,9 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log("GameManager's Position : " + transform.position);
     }
+
+    public void StartFlow()
+    {
+
+    }
 }
