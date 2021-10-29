@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-//Youtube Tutorial Link https://youtu.be/LyoHCAgbDcw
+//Youtube Tutorials Link : https://www.youtube.com/playlist?list=PLLH3mUGkfFCU5D0nT9dsN2-RYh1XjnHgH
 //Original Script Ownder : N3K EN , https://www.youtube.com/channel/UCtQPCnbIB7SP_gM1Xtv8bDQ
 
 public class MenuScene : MonoBehaviour
@@ -14,7 +15,6 @@ public class MenuScene : MonoBehaviour
 
     public RectTransform menuContainer;
     public Transform levelPanel;
-
     public Transform ShopPanel;
 
     private Vector3 desiredMenuPosition;
@@ -22,6 +22,8 @@ public class MenuScene : MonoBehaviour
 
     private void Start() 
     {
+        SetCameraTo(Manager.Instance.menuFocus);
+
         fadegroup = FindObjectOfType<CanvasGroup>();
 
         fadegroup.alpha = 1;
@@ -50,7 +52,6 @@ public class MenuScene : MonoBehaviour
 
             Button b = t.GetComponent<Button>();
             b.onClick.AddListener(() => OnWrenchSelect(currentIndex));
-
             i++;
         }   
     }
@@ -68,8 +69,34 @@ public class MenuScene : MonoBehaviour
             Button b = t.GetComponent<Button>();
             b.onClick.AddListener(() => OnLevelSelect(currentIndex));
 
+            Image img = t.GetComponent<Image>();
+
+            if(i <= SaveManager.Instance.state.completedLevel)
+            {
+                if(i == SaveManager.Instance.state.completedLevel)
+                {
+                    img.color = Color.white;
+                }
+                else
+                {
+                    img.color = Color.green; 
+                }
+            }
+            else
+            {
+                b.interactable = false;
+
+                img.color = Color.grey;
+            }
+
             i++;
         }
+    }
+
+    private void SetCameraTo(int menuIndex)
+    {
+        NavigateTo(menuIndex);
+        menuContainer.anchoredPosition3D = desiredMenuPosition;
     }
 
     private void NavigateTo (int menuIndex)
@@ -90,8 +117,10 @@ public class MenuScene : MonoBehaviour
         }
     }
 
-    private void OnLevelSelect(int currentIndex)
+    private void OnLevelSelect(int currentIndex) 
     {
+        Manager.Instance.currentlLevel = currentIndex;
+        SceneManager.LoadScene("Game");
         Debug.Log("Selected level : " + currentIndex);
     }
 
