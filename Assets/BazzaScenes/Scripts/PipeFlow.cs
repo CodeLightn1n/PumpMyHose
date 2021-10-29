@@ -10,13 +10,6 @@ public class PipeFlow : Pipe
     public bool up, down, left, right;
 
     public float distance;
-    //public void FindAndStartFlow()
-    //{
-    //    if(HasPlaced)
-    //    {
-
-    //    }
-    //}
 
     private void Awake()
     {
