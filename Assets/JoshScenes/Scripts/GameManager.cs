@@ -28,6 +28,14 @@ public class GameManager : MonoBehaviour
 
     public void StartFlow()
     {
-
+        List<PipeFlow> pipes = new List<PipeFlow>();
+        foreach(PipeFlow pipe in GameObject.FindObjectsOfType<PipeFlow>())
+        {
+            pipes.Add(pipe);
+            if(pipe.gameObject.CompareTag("StartPipe"))
+            {
+                pipe.EngageFlow();
+            }
+        }
     }
 }

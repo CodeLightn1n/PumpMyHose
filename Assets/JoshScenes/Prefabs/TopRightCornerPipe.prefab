@@ -139,4 +139,4 @@ MonoBehaviour:
   down: 0
   left: 0
   right: 1
-  distance: 1
+  distance: 0.5
