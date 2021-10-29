@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     {
         grid = FindObjectOfType<GridManager>();
         CurrentScene = SceneManager.GetActiveScene();
-        Level1 = SceneManager.GetSceneByBuildIndex(1);
+        Level1 = SceneManager.GetSceneByBuildIndex(2);
         SetGrid();
     }
 
@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour
             if(pipe.gameObject.CompareTag("StartPipe"))
             {
                 pipe.EngageFlow();
+            }
+            if(pipe.gameObject.CompareTag("EndPipe"))
+            {
+                this.gameObject.GetComponent<GameSceneTest>().CompletedLevel();
             }
         }
     }

@@ -120,7 +120,7 @@ public class MenuScene : MonoBehaviour
     private void OnLevelSelect(int currentIndex) 
     {
         Manager.Instance.currentlLevel = currentIndex;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("JoshTest");
         Debug.Log("Selected level : " + currentIndex);
     }
 
