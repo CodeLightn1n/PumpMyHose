@@ -15,16 +15,22 @@ public class SaveManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Instance = this;   
         Load();
+        //Clean(); //Uncommend *Clean* To reset the save data and once reset commit it out again
 
         Debug.Log(Helper.Serialize<SaveState>(state));
     }
 
-    //Save the whole state of this script
+    /// <summary>
+    /// Save the whole state of this script
+    /// </summary>
     public void Save()
     {
         PlayerPrefs.SetString("save" ,Helper.Serialize<SaveState>(state));
     }
 
+    /// <summary>
+    /// Will load the current progress of save script
+    /// </summary>
     public void Load()
     {
         if(PlayerPrefs.HasKey("save"))
@@ -39,9 +45,13 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public void ResetSave()
+    /// <summary>
+    /// Will delete the save file and reset to the orginal state
+    /// </summary>
+    public void Clean()
     {
-        PlayerPrefs.DeleteKey("save");
+        PlayerPrefs.DeleteAll();
+        Debug.Log("Save state has been deleted and making new one");
     }
 
     public void CompletedLevel(int index)
@@ -52,5 +62,4 @@ public class SaveManager : MonoBehaviour
             Save();
         }
     }
-    
 }

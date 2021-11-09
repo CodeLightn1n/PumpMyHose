@@ -16,6 +16,7 @@ public class MenuScene : MonoBehaviour
     public RectTransform menuContainer;
     public Transform levelPanel;
     public Transform ShopPanel;
+    public Transform SettingPanel;
 
     private Vector3 desiredMenuPosition;
 
@@ -30,7 +31,9 @@ public class MenuScene : MonoBehaviour
 
         InitShop(); 
 
-        InitLevel();  
+        InitLevel();
+
+        InitShop();
     }
 
     private void Update() 
@@ -85,12 +88,15 @@ public class MenuScene : MonoBehaviour
             else
             {
                 b.interactable = false;
-
                 img.color = Color.grey;
             }
-
             i++;
         }
+    }
+
+    private void InitSetting()
+    {
+        //TODO : Have a button in the setting menu to give the players to reset all progress for the game through the Save Manager script
     }
 
     private void SetCameraTo(int menuIndex)
@@ -99,21 +105,26 @@ public class MenuScene : MonoBehaviour
         menuContainer.anchoredPosition3D = desiredMenuPosition;
     }
 
+    /// <summary>
+    /// Will get the Transform of the Ract Transform on the cavus and switch to those specific destinations
+    /// </summary>
     private void NavigateTo (int menuIndex)
     {
         switch (menuIndex)
         {
             default:
-            case 0: //MainMenu
+            case 0: //Main Menu
                 desiredMenuPosition = Vector3.zero;
                 break;
-            case 1://PlayMenu
-                desiredMenuPosition = Vector3.right * 673;
+            case 1://Level Menu
+                desiredMenuPosition = Vector3.down * -1441;
                 break;
-            case 2:// Shopmenu
-                desiredMenuPosition = Vector3.left * 673;
+            case 2:// Shop Menu
+                desiredMenuPosition = Vector3.right * -693;
                 break;
-            
+            case 3://Setting Menu
+                desiredMenuPosition = Vector3.left * -693;
+                break;
         }
     }
 
@@ -129,17 +140,20 @@ public class MenuScene : MonoBehaviour
         Debug.Log("Slected item " + currentIndex);
     }
 
-    //Button Section
+    //Button Section to switch canvese 
     public void OnPlayClick()
     {
         NavigateTo(1);
-        Debug.Log ("PlayButton");
     }
 
     public void OnStoreClick()
     {
         NavigateTo(2);
-        Debug.Log ("StoreButton");
+    }
+
+    public void OnSettingClick()
+    {
+        NavigateTo(3);
     }
 
     public void OnBackClick()
