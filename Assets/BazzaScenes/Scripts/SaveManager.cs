@@ -15,7 +15,7 @@ public class SaveManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Instance = this;   
         Load();
-        //Clean(); //Uncommend *Clean* To reset the save data and once reset commit it out again
+        //Clean(); //Uncomment *Clean* To reset the save data and once reset commit it out again
 
         Debug.Log(Helper.Serialize<SaveState>(state));
     }

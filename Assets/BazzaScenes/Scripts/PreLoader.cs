@@ -28,7 +28,6 @@ public class PreLoader : MonoBehaviour
             loadtime = Time.time;    
         }
     }
-
     private void Update() 
     {
         if(Time.time < minimumLogoTime)
@@ -41,7 +40,7 @@ public class PreLoader : MonoBehaviour
             fadegroup.alpha = Time.time - minimumLogoTime;
             if(fadegroup.alpha >= 1)
             {
-               SceneManager.LoadScene("Menu");
+               SceneManager.LoadScene("B_MainMenu");
             }
         }
     }
