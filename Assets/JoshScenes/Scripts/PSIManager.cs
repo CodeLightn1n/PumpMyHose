@@ -7,7 +7,11 @@ namespace PSIElements
     public static class PSIManager
     {
         static int OverallPSI;
-
+       
+        public static void function()
+        {
+            Debug.Log("You smell bazza");
+        }
         /// <summary>
         /// Sets the PSI that everything will share
         /// </summary>
@@ -16,6 +20,10 @@ namespace PSIElements
         {
             OverallPSI = psi;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>the overall PSI</returns>
         public static int GetOverallPSI()
         {
             return OverallPSI;
