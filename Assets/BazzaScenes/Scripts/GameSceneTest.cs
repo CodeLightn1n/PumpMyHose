@@ -18,6 +18,6 @@ public class GameSceneTest : MonoBehaviour
 
     public void ExitScene()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(1);
     }
 }
