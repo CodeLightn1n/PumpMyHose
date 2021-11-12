@@ -8,6 +8,10 @@ namespace PSIElements
     {
         static int OverallPSI;
 
+        /// <summary>
+        /// Sets the PSI that everything will share
+        /// </summary>
+        /// <param name="psi"></param>
         public static void SetOverallPSI(int psi)
         {
             OverallPSI = psi;
