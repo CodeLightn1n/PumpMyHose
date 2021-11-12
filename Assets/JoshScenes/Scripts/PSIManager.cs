@@ -4,9 +4,12 @@ using UnityEngine;
 
 namespace PSIElements
 {
+    
     public static class PSIManager
     {
         static int OverallPSI;
+
+        static float battlefeild;
 
         /// <summary>
         /// Sets the PSI that everything will share
@@ -19,6 +22,7 @@ namespace PSIElements
         public static int GetOverallPSI()
         {
             return OverallPSI;
+            
         }
     }
 }
