@@ -9,6 +9,8 @@ public class PipeFlow : Pipe
     //Each grid is 0.75, so onced half it 0.375
     public bool up, down, left, right;
 
+    private Vector3 Offset;
+
     public float distance;
 
     private void Awake()
@@ -54,18 +56,22 @@ public class PipeFlow : Pipe
     {
         if (up)
         {
+            Offset = new Vector3(0f, 0.5f, 0f);
             StartFlowOnConnectedPipe(Vector2.up);
         }
         if (down)
         {
+            Offset = new Vector3(0f, -0.5f, 0f);
             StartFlowOnConnectedPipe(Vector2.down);
         }
         if (left)
         {
+            Offset = new Vector3(-0.5f, 0f, 0f);
             StartFlowOnConnectedPipe(Vector2.left);
         }
         if (right)
         {
+            Offset = new Vector3(0.5f, 0f, 0f);
             StartFlowOnConnectedPipe(Vector2.right);
         }
     }
@@ -80,12 +86,14 @@ public class PipeFlow : Pipe
 
         //DebugStuff
         Color debugColor = Color.red;
+        
 
-        hit = Physics2D.Raycast(transform.position, direction, distance);
+        hit = Physics2D.Raycast(transform.position + Offset, direction, distance);
 
         //does the object we hit have a collider
         if (hit.collider != null)
         {
+            Debug.Log("Object Name : " + hit.collider.name + "\nObject Tag : " + hit.collider.tag);
             if (hit.collider.tag == "Pipe")
             {
                 PipeFlow connectedPipe = hit.collider.GetComponent<PipeFlow>();
@@ -107,6 +115,6 @@ public class PipeFlow : Pipe
             //There is no pipe there
         }
 
-        Debug.DrawRay(transform.position, direction * distance, debugColor, 5);
+        Debug.DrawRay(transform.position + Offset, direction * distance, debugColor, 5);
     }
 }
