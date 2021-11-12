@@ -11,9 +11,11 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
+
         DontDestroyOnLoad(gameObject);
-        Instance = this;    
+        Instance = this;
+        Application.targetFrameRate = 60;
     }
     public int currentlLevel = 0; //Used when changing from menu to game scene
-    public int menuFocus = 0;     //Used when entering the game menu scene, to know which menu
+    public int menuFocus = 0;     //Used when entering the game menu scene, to know which menu to focus
 }
