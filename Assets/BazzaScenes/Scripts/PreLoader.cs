@@ -40,7 +40,7 @@ public class PreLoader : MonoBehaviour
             fadegroup.alpha = Time.time - minimumLogoTime;
             if(fadegroup.alpha >= 1)
             {
-               SceneManager.LoadScene("B_MainMenu");
+                SceneManager.LoadScene(1);
             }
         }
     }
