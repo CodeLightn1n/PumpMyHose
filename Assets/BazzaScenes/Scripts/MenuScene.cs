@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 //Youtube Tutorials Link : https://www.youtube.com/playlist?list=PLLH3mUGkfFCU5D0nT9dsN2-RYh1XjnHgH
 //Original Script Ownder : N3K EN , https://www.youtube.com/channel/UCtQPCnbIB7SP_gM1Xtv8bDQ
@@ -20,6 +21,7 @@ public class MenuScene : MonoBehaviour
 
     private Vector3 desiredMenuPosition;
 
+    public AudioMixer audioMixer;
 
     private void Start() 
     {
@@ -41,6 +43,11 @@ public class MenuScene : MonoBehaviour
         fadegroup.alpha = 1 - Time.timeSinceLevelLoad * FadeInSpeed;
 
         menuContainer.anchoredPosition3D = Vector3.Lerp(menuContainer.anchoredPosition3D,desiredMenuPosition,0.1f);
+    }
+
+    public void SetVolume (float volumne)
+    {
+         audioMixer.SetFloat("volume",volumne);
     }
 
     private void InitShop()
@@ -76,6 +83,8 @@ public class MenuScene : MonoBehaviour
 
             if(i <= SaveManager.Instance.state.completedLevel)
             {
+                //TODO: Make it go up a scene when a level has been completed
+
                 if(i == SaveManager.Instance.state.completedLevel)
                 {
                     img.color = Color.white;
@@ -96,7 +105,7 @@ public class MenuScene : MonoBehaviour
 
     private void InitSetting()
     {
-        //TODO : Have a button in the setting menu to give the players to reset all progress for the game through the Save Manager script
+        
     }
 
     private void SetCameraTo(int menuIndex)

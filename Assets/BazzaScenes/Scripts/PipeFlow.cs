@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Orignal Script Owner : Karl Pytte 
+
 [RequireComponent(typeof(CircleCollider2D), typeof(Rigidbody2D))]
 
 public class PipeFlow : Pipe
