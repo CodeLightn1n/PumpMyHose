@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-
 /*
     THIS IS A APA7TH SCRIPT/CODE from https://uark.libguides.com/CSCE/CitingCode
 Title: AudioManager
@@ -8,8 +7,6 @@ Aurther: Greg Eads
 Date: <2019>
 Availability https://youtu.be/9ROolmPSC70
 */
-
-
 public class AudioManager : MonoBehaviour
 {
     private static readonly string FirstPlay = "FirstPlay";
@@ -34,7 +31,6 @@ public class AudioManager : MonoBehaviour
             PlayerPrefs.SetFloat(BackgroundPref, backgroundFloat);
             PlayerPrefs.SetFloat(SoundEffectsPref, soundEffectsFloat);
             PlayerPrefs.SetInt(FirstPlay, -1);
-            
         }
         else
         {
@@ -45,7 +41,6 @@ public class AudioManager : MonoBehaviour
         }
 
     }
-
 
     public void SaveSoundSettings()
     {
@@ -63,7 +58,6 @@ public class AudioManager : MonoBehaviour
             SaveSoundSettings();
         }
     }
-
     public void UpdateSound()
     {
         backgroundAudio.volume = backgroundSlider.value;
@@ -73,5 +67,4 @@ public class AudioManager : MonoBehaviour
             soundEffectsAudio[i].volume = soundEffectSlider.value;
         }
     }
-
 }
