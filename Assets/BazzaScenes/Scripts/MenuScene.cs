@@ -15,13 +15,11 @@ public class MenuScene : MonoBehaviour
     private float FadeInSpeed = 0.33f;
 
     public RectTransform menuContainer;
-    public Transform levelPanel;
-    public Transform ShopPanel;
-    public Transform SettingPanel;
+    public Transform levelPanel, ShopPanel, SettingPanel;
+
+    public int panelLevelPosition, panelShopPosition, panelSettingPosition;
 
     private Vector3 desiredMenuPosition;
-
-    public AudioMixer audioMixer;
 
     private void Start() 
     {
@@ -32,9 +30,7 @@ public class MenuScene : MonoBehaviour
         fadegroup.alpha = 1;
 
         InitShop(); 
-
         InitLevel();
-
         InitShop();
     }
 
@@ -43,11 +39,6 @@ public class MenuScene : MonoBehaviour
         fadegroup.alpha = 1 - Time.timeSinceLevelLoad * FadeInSpeed;
 
         menuContainer.anchoredPosition3D = Vector3.Lerp(menuContainer.anchoredPosition3D,desiredMenuPosition,0.1f);
-    }
-
-    public void SetVolume (float volumne)
-    {
-         audioMixer.SetFloat("volume",volumne);
     }
 
     private void InitShop()
@@ -66,6 +57,11 @@ public class MenuScene : MonoBehaviour
         }   
     }
 
+    public void levelSelect(int level)//Apply this to specific level for the next level
+    {
+        SceneManager.LoadScene(level);
+    }
+
     private void InitLevel()
     {
         if(levelPanel == null)
@@ -77,14 +73,11 @@ public class MenuScene : MonoBehaviour
             int currentIndex = i;
 
             Button b = t.GetComponent<Button>();
-            b.onClick.AddListener(() => OnLevelSelect(currentIndex));
-
+            
             Image img = t.GetComponent<Image>();
 
             if(i <= SaveManager.Instance.state.completedLevel)
             {
-                //TODO: Make it go up a scene when a level has been completed
-
                 if(i == SaveManager.Instance.state.completedLevel)
                 {
                     img.color = Color.white;
@@ -126,13 +119,13 @@ public class MenuScene : MonoBehaviour
                 desiredMenuPosition = Vector3.zero;
                 break;
             case 1://Level Menu
-                desiredMenuPosition = Vector3.down * -1441;
+                desiredMenuPosition = Vector3.down * panelLevelPosition;
                 break;
             case 2:// Shop Menu
-                desiredMenuPosition = Vector3.right * -693;
+                desiredMenuPosition = Vector3.right * panelShopPosition;
                 break;
             case 3://Setting Menu
-                desiredMenuPosition = Vector3.left * -693;
+                desiredMenuPosition = Vector3.left * panelSettingPosition;
                 break;
         }
     }
