@@ -13,5 +13,17 @@ public class Pipe : MonoBehaviour
         {
             this.gameObject.transform.position = collision.gameObject.transform.position;
         }
+        if(collision.gameObject.CompareTag("StartPipe"))
+        {
+            this.gameObject.tag = "StartPipe";
+        }
+        else if(collision.gameObject.CompareTag("EndPipe"))
+        {
+            this.gameObject.tag = "EndPipe";
+        }
+        else
+        {
+            this.gameObject.tag = "Pipe";
+        }
     }
 }

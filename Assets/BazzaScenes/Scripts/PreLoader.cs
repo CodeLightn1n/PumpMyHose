@@ -14,8 +14,9 @@ public class PreLoader : MonoBehaviour
 
     private void Start() 
     {
+        //Grab the only CanvusGroup in the scene
         fadegroup = FindObjectOfType<CanvasGroup>();
-
+        //Start with a gray screen
         fadegroup.alpha = 1;
 
         if(Time.time < minimumLogoTime)
@@ -44,6 +45,4 @@ public class PreLoader : MonoBehaviour
             }
         }
     }
-
-
 }

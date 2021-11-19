@@ -33,13 +33,17 @@ public class GridManager : MonoBehaviour
         {
             GameObject space = Instantiate(GridSpace, new Vector3( StartX + ( SpaceX * (i % Length)), StartY + ( SpaceY * (i / Height))), Quaternion.identity);
             space.gameObject.name = "GridSpace";
+            SpriteRenderer spriteColour = space.gameObject.GetComponent<SpriteRenderer>();
             if(StartPipe == i)
             {
                 space.gameObject.tag = "StartPipe";
+                spriteColour.color = Color.green;
+                
             }
             else if(EndPipe == i)
             {
                 space.gameObject.tag = "EndPipe";
+                spriteColour.color = Color.red;
             }
             else
             {

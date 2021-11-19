@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     {
         grid = FindObjectOfType<GridManager>();
         CurrentScene = SceneManager.GetActiveScene();
-        Level1 = SceneManager.GetSceneByBuildIndex(1);
+        Level1 = SceneManager.GetSceneByBuildIndex(2);
         SetGrid();
     }
 
@@ -24,5 +24,22 @@ public class GameManager : MonoBehaviour
             grid.SetGridSize(5, 5, 1, 2, 20);
         }
         Debug.Log("GameManager's Position : " + transform.position);
+    }
+
+    public void StartFlow()
+    {
+        List<PipeFlow> pipes = new List<PipeFlow>();
+        foreach(PipeFlow pipe in GameObject.FindObjectsOfType<PipeFlow>())
+        {
+            pipes.Add(pipe);
+            if(pipe.gameObject.CompareTag("StartPipe"))
+            {
+                pipe.EngageFlow();
+            }
+            if(pipe.gameObject.CompareTag("EndPipe"))
+            {
+                this.gameObject.GetComponent<GameSceneTest>().CompletedLevel();
+            }
+        }
     }
 }
