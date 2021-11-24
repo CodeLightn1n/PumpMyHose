@@ -9,15 +9,8 @@ namespace PSIElements
     {
         static int OverallPSI;
 
-        static float battlefeild;
-
-       
-        public static void function()
-        {
-            Debug.Log("You smell bazza");
-        }
         /// <summary>
-        /// Sets the PSI that everything will share
+        /// Sets the overall PSI
         /// </summary>
         /// <param name="psi"></param>
         public static void SetOverallPSI(int psi)
@@ -25,7 +18,15 @@ namespace PSIElements
             OverallPSI = psi;
         }
         /// <summary>
-        /// 
+        /// Adds onto overall psi to subtract make the int negative
+        /// </summary>
+        /// <param name="psi"></param>
+        public static void AddOverallPSi(int psi)
+        {
+            OverallPSI += psi;
+        }
+        /// <summary>
+        /// Get the overall PSI
         /// </summary>
         /// <returns>the overall PSI</returns>
         public static int GetOverallPSI()
