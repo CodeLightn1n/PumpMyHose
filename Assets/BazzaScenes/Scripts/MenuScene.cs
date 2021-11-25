@@ -19,6 +19,8 @@ public class MenuScene : MonoBehaviour
 
     public int panelLevelPosition, panelShopPosition, panelSettingPosition;
 
+    [SerializeField]private Transform[] purchasable;
+
     private Vector3 desiredMenuPosition;
 
     private void Start() 
@@ -47,7 +49,7 @@ public class MenuScene : MonoBehaviour
             Debug.Log("It working I think");
         
         int i = 0;
-        foreach (Transform t in ShopPanel)
+        foreach (Transform t in purchasable)
         {
             int currentIndex = i;
 
