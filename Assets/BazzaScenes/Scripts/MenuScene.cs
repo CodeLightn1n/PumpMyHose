@@ -23,6 +23,8 @@ public class MenuScene : MonoBehaviour
 
     private Vector3 desiredMenuPosition;
 
+    private Vector3 levelMennSpeed;
+
     private void Start() 
     {
         SetCameraTo(Manager.Instance.menuFocus);
@@ -41,6 +43,7 @@ public class MenuScene : MonoBehaviour
         fadegroup.alpha = 1 - Time.timeSinceLevelLoad * FadeInSpeed;
 
         menuContainer.anchoredPosition3D = Vector3.Lerp(menuContainer.anchoredPosition3D,desiredMenuPosition,0.1f);
+
     }
 
     private void InitShop()
