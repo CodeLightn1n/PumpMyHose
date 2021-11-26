@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using PSIElements;
 
+//Orignal Script Owner : Karl Pytte 
+
 [RequireComponent(typeof(CircleCollider2D), typeof(Rigidbody2D))]
 
 public class PipeFlow : Pipe
