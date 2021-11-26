@@ -20,8 +20,6 @@ public class PipeFlow : Pipe
 
     private GameManager GM;
 
-    public LayerMask GridMask;
-
     private void Awake()
     {
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
@@ -47,7 +45,7 @@ public class PipeFlow : Pipe
         left = startingState[2];
         right = startingState[3];
 
-        //Debug.Log(originDirection);
+        Debug.Log(originDirection);
 
         if (up && originDirection.y == -1f)
         {
@@ -112,7 +110,7 @@ public class PipeFlow : Pipe
         Color debugColor = Color.red;
         
 
-        hit = Physics2D.Raycast(transform.position + Offset, direction, distance, GridMask);
+        hit = Physics2D.Raycast(transform.position + Offset, direction, distance);
 
         //does the object we hit have a collider
         if (hit.collider != null)
@@ -133,7 +131,7 @@ public class PipeFlow : Pipe
             }
             if(hit.collider.tag == "EndPipe")
             {
-                //Debug.Log("The end has been reached");
+                Debug.Log("The end has been reached");
                 GM.UpdatePSI();
             }
         }
