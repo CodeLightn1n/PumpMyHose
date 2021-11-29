@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PSIElements;
+
+//Orignal Script Owner : Karl Pytte 
 
 [RequireComponent(typeof(CircleCollider2D), typeof(Rigidbody2D))]
 
@@ -9,13 +12,26 @@ public class PipeFlow : Pipe
     //Each grid is 0.75, so onced half it 0.375
     public bool up, down, left, right;
 
+    private bool[] startingState = new bool[4];
+
     private Vector3 Offset;
 
     public float distance;
 
+    private GameManager GM;
+
     private void Awake()
     {
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+    }
+    private void Start()
+    {
+        startingState[0] = up;
+        startingState[1] = down;
+        startingState[2] = left;
+        startingState[3] = right;
+
+        GM = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
 
     /// <summary>
@@ -23,6 +39,12 @@ public class PipeFlow : Pipe
     /// </summary>
     public bool ValidCheck(Vector2 originDirection)
     {
+
+        up = startingState[0];
+        down = startingState[1];
+        left = startingState[2];
+        right = startingState[3];
+
         Debug.Log(originDirection);
 
         if (up && originDirection.y == -1f)
@@ -102,12 +124,16 @@ public class PipeFlow : Pipe
                 //is the direction associated with an opening in the pipe that we hit
                 if (connectedPipe.ValidCheck(direction))
                 {
+                    PSIElements.PSIManager.AddOverallPSi(-5);
                     connectedPipe.EngageFlow();
                     debugColor = Color.green;
                 }
             }
-
-            //also put the check for the exit node here
+            if(hit.collider.tag == "EndPipe")
+            {
+                Debug.Log("The end has been reached");
+                GM.UpdatePSI();
+            }
         }
         else
         {

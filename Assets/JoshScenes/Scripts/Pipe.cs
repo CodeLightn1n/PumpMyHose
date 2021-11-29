@@ -9,21 +9,27 @@ public class Pipe : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         
+        //placing the pipe to the grid placement
         if (HasPlaced && collision.gameObject.name == "GridSpace")
         {
             this.gameObject.transform.position = collision.gameObject.transform.position;
+
+            //assigning tag
+            if (collision.gameObject.CompareTag("StartPipe"))
+            {
+                this.gameObject.tag = "StartPipe";
+            }
+            else if (collision.gameObject.CompareTag("EndPipe"))
+            {
+                this.gameObject.tag = "EndPipe";
+            }
+            else if(collision.gameObject.CompareTag("Pipe"))
+            {
+                this.gameObject.tag = "Pipe";
+            }
         }
-        if(collision.gameObject.CompareTag("StartPipe"))
-        {
-            this.gameObject.tag = "StartPipe";
-        }
-        else if(collision.gameObject.CompareTag("EndPipe"))
-        {
-            this.gameObject.tag = "EndPipe";
-        }
-        else
-        {
-            this.gameObject.tag = "Pipe";
-        }
+        
+
+        
     }
 }
