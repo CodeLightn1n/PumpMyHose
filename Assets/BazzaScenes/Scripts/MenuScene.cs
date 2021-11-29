@@ -38,7 +38,7 @@ public class MenuScene : MonoBehaviour
 
     private void Update() 
     {
-        fadegroup.alpha = 1 - Time.timeSinceLevelLoad * FadeInSpeed;
+        fadegroup.alpha = 1 - Time.deltaTime * FadeInSpeed;
 
         menuContainer.anchoredPosition3D = Vector3.Lerp(menuContainer.anchoredPosition3D,desiredMenuPosition,0.1f);
     }
@@ -66,7 +66,7 @@ public class MenuScene : MonoBehaviour
 
     private void InitLevel()
     {
-        if(levelPanel == null)
+        /*if(levelPanel == null)
             Debug.Log("It working I think");
         
         int i = 0;
@@ -95,7 +95,7 @@ public class MenuScene : MonoBehaviour
                 img.color = Color.grey;
             }
             i++;
-        }
+        }*/
     }
 
     private void InitSetting()
