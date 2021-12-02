@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GridSpace: {fileID: 7022699227403473859, guid: a9ce05f1d9bf8b441833a2969c7a317f, type: 3}
+  InOutPipe: {fileID: 302831223492131102, guid: dcbd7e10977088b48b911e699f6cb831, type: 3}
 --- !u!4 &702331697
 Transform:
   m_ObjectHideFlags: 0
@@ -490,7 +491,7 @@ GameObject:
   - component: {fileID: 844305621}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

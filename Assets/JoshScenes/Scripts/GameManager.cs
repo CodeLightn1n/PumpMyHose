@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
             }
             if(pipe.gameObject.CompareTag("EndPipe"))
             {
-                this.gameObject.GetComponent<GameSceneTest>().CompletedLevel();
+                //this.gameObject.GetComponent<GameSceneTest>().CompletedLevel();
                 Debug.Log("You have finished the level");
             }
         }
