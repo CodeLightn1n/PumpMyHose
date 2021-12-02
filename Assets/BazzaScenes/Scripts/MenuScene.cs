@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 //Youtube Tutorials Link : https://www.youtube.com/playlist?list=PLLH3mUGkfFCU5D0nT9dsN2-RYh1XjnHgH
 //Original Script Ownder : N3K EN , https://www.youtube.com/channel/UCtQPCnbIB7SP_gM1Xtv8bDQ
@@ -14,12 +15,13 @@ public class MenuScene : MonoBehaviour
     private float FadeInSpeed = 0.33f;
 
     public RectTransform menuContainer;
-    public Transform levelPanel;
-    public Transform ShopPanel;
-    public Transform SettingPanel;
+    public Transform levelPanel, ShopPanel, SettingPanel;
+
+    public int panelLevelPosition, panelShopPosition, panelSettingPosition;
+
+    [SerializeField]private Transform[] purchasable;
 
     private Vector3 desiredMenuPosition;
-
 
     private void Start() 
     {
@@ -30,15 +32,13 @@ public class MenuScene : MonoBehaviour
         fadegroup.alpha = 1;
 
         InitShop(); 
-
         InitLevel();
-
         InitShop();
     }
 
     private void Update() 
     {
-        fadegroup.alpha = 1 - Time.timeSinceLevelLoad * FadeInSpeed;
+        fadegroup.alpha = 1 - Time.deltaTime * FadeInSpeed;
 
         menuContainer.anchoredPosition3D = Vector3.Lerp(menuContainer.anchoredPosition3D,desiredMenuPosition,0.1f);
     }
@@ -49,7 +49,7 @@ public class MenuScene : MonoBehaviour
             Debug.Log("It working I think");
         
         int i = 0;
-        foreach (Transform t in ShopPanel)
+        foreach (Transform t in purchasable)
         {
             int currentIndex = i;
 
@@ -59,9 +59,14 @@ public class MenuScene : MonoBehaviour
         }   
     }
 
+    public void levelSelect(int level)//Apply this to specific level for the next level
+    {
+        SceneManager.LoadScene(level);
+    }
+
     private void InitLevel()
     {
-        if(levelPanel == null)
+        /*if(levelPanel == null)
             Debug.Log("It working I think");
         
         int i = 0;
@@ -70,8 +75,7 @@ public class MenuScene : MonoBehaviour
             int currentIndex = i;
 
             Button b = t.GetComponent<Button>();
-            b.onClick.AddListener(() => OnLevelSelect(currentIndex));
-
+            
             Image img = t.GetComponent<Image>();
 
             if(i <= SaveManager.Instance.state.completedLevel)
@@ -91,12 +95,12 @@ public class MenuScene : MonoBehaviour
                 img.color = Color.grey;
             }
             i++;
-        }
+        }*/
     }
 
     private void InitSetting()
     {
-        //TODO : Have a button in the setting menu to give the players to reset all progress for the game through the Save Manager script
+        
     }
 
     private void SetCameraTo(int menuIndex)
@@ -117,13 +121,13 @@ public class MenuScene : MonoBehaviour
                 desiredMenuPosition = Vector3.zero;
                 break;
             case 1://Level Menu
-                desiredMenuPosition = Vector3.down * -1441;
+                desiredMenuPosition = Vector3.down * panelLevelPosition;
                 break;
             case 2:// Shop Menu
-                desiredMenuPosition = Vector3.right * -693;
+                desiredMenuPosition = Vector3.right * panelShopPosition;
                 break;
             case 3://Setting Menu
-                desiredMenuPosition = Vector3.left * -693;
+                desiredMenuPosition = Vector3.left * panelSettingPosition;
                 break;
         }
     }
