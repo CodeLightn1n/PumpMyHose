@@ -140,6 +140,3 @@ MonoBehaviour:
   left: 1
   right: 0
   distance: 0.5
-  GridMask:
-    serializedVersion: 2
-    m_Bits: 55
