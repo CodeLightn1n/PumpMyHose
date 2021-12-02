@@ -1,8 +1,13 @@
 using System.IO;
 using System.Xml.Serialization;
 
-//Youtube Tutorials Link : https://www.youtube.com/playlist?list=PLLH3mUGkfFCU5D0nT9dsN2-RYh1XjnHgH
-//Original Script Ownder : N3K EN , https://www.youtube.com/channel/UCtQPCnbIB7SP_gM1Xtv8bDQ
+/*
+    THIS IS A APA7TH SCRIPT/CODE from https://uark.libguides.com/CSCE/CitingCode
+Title: Helper
+Aurther: N3K EN
+Date: <2017>
+Availability https://youtube.com/playlist?list=PLLH3mUGkfFCU5D0nT9dsN2-RYh1XjnHgH
+*/
 
 public static class Helper 
 {
