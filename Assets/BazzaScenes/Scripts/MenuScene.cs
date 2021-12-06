@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using TMPro;
 
 //Youtube Tutorials Link : https://www.youtube.com/playlist?list=PLLH3mUGkfFCU5D0nT9dsN2-RYh1XjnHgH
 //Original Script Ownder : N3K EN , https://www.youtube.com/channel/UCtQPCnbIB7SP_gM1Xtv8bDQ
@@ -22,6 +23,10 @@ public class MenuScene : MonoBehaviour
     [SerializeField]private Transform[] purchasable;
 
     private Vector3 desiredMenuPosition;
+
+    public TextMeshProUGUI wrenchDisplay, bluePrintDisplay;
+    public int wrench,bluePrint;
+    public int wrenchPerClick, bluePrintPerClick;
 
     private void Start() 
     {
@@ -142,6 +147,10 @@ public class MenuScene : MonoBehaviour
     private void OnWrenchSelect(int currentIndex)
     {
         Debug.Log("Slected item " + currentIndex);
+
+        wrench += wrenchPerClick;
+        wrenchDisplay.text = ""+ wrench;
+
     }
 
     //Button Section to switch canvese 
