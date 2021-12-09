@@ -11,7 +11,7 @@ public class SingleLevel : MonoBehaviour
 
     public void BackButton()
     {
-        SceneManager.LoadScene(("01_MainMenu"));
+        SceneManager.LoadScene(("01_MainMenu_01"));
     }
 
     public void PressStarsButton(int _starsNum)
