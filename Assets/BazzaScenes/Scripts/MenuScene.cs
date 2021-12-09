@@ -13,7 +13,7 @@ using TMPro;
 public class MenuScene : MonoBehaviour
 {
     private CanvasGroup fadegroup;
-    private float FadeInSpeed = 0.33f;
+    private float FadeInSpeed = 0.0f;
 
     public RectTransform menuContainer;
     public Transform levelPanel, ShopPanel, SettingPanel;
@@ -28,7 +28,6 @@ public class MenuScene : MonoBehaviour
         SetCameraTo(Manager.Instance.menuFocus);
 
         fadegroup = FindObjectOfType<CanvasGroup>();
-
         fadegroup.alpha = 1;
 
         InitShop(); 
@@ -39,14 +38,12 @@ public class MenuScene : MonoBehaviour
     private void Update() 
     {
         fadegroup.alpha = 1 - Time.deltaTime * FadeInSpeed;
-
         menuContainer.anchoredPosition3D = Vector3.Lerp(menuContainer.anchoredPosition3D,desiredMenuPosition,0.1f);
     }
 
     private void InitShop()
     {
-        if(ShopPanel == null)
-            Debug.Log("It working I think");
+       
     }
 
     public void levelSelect(int level)//Apply this to specific level for the next level
@@ -56,36 +53,7 @@ public class MenuScene : MonoBehaviour
 
     private void InitLevel()
     {
-        /*if(levelPanel == null)
-            Debug.Log("It working I think");
-        
-        int i = 0;
-        foreach (Transform t in levelPanel)
-        {
-            int currentIndex = i;
-
-            Button b = t.GetComponent<Button>();
-            
-            Image img = t.GetComponent<Image>();
-
-            if(i <= SaveManager.Instance.state.completedLevel)
-            {
-                if(i == SaveManager.Instance.state.completedLevel)
-                {
-                    img.color = Color.white;
-                }
-                else
-                {
-                    img.color = Color.green; 
-                }
-            }
-            else
-            {
-                b.interactable = false;
-                img.color = Color.grey;
-            }
-            i++;
-        }*/
+      
     }
 
     private void InitSetting()
