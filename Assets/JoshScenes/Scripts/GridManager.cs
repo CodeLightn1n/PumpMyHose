@@ -49,6 +49,7 @@ public class GridManager : MonoBehaviour
         {
             GameObject space = Instantiate(GridSpace, new Vector3( StartX + ( SpaceX * (i % Length)), StartY + ( SpaceY * (i / Height))), Quaternion.identity);
             space.gameObject.name = "GridSpace";
+            space.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             SpriteRenderer spriteColour = space.gameObject.GetComponent<SpriteRenderer>();
             if(StartPipe == i)
             {
@@ -142,10 +143,44 @@ public class GridManager : MonoBehaviour
         }
         
     }
-
+    /// <summary>
+    /// Spawn the In/Out pipe accordingly to which edge it is instantiated on
+    /// </summary>
+    /// <param name="pipe">the grid spot spawn the pipe</param>
+    /// <param name="directions">a lsit of directions that can be detected use EdgeDetection() function to fill a Vector2 List</param>
     private void SummonInOutPipe(GameObject pipe, List<Vector2> directions)
     {
-        Instantiate(InOutPipe.gameObject, pipe.transform.position + (Vector3)directions[Random.Range(0, directions.Count)], Quaternion.identity);
+        int randy = Random.Range(0, directions.Count);
+        /*Debug.Log("Direction chosen : " + directions[randy] + "\n"
+            + "Random Integer : " + randy + "\n"
+            + "Object Name : " + pipe.name);*/
+        if(directions[randy]== Vector2.up)
+        {
+            pipe = Instantiate(InOutPipe.gameObject, pipe.transform.position + (Vector3)directions[randy]/4, Quaternion.Euler(0,0,270));
+            pipe.GetComponent<PipeFlow>().down = true;
+            //Debug.Log("Pipe Check 1 : " + pipe);
+        }
+        else if (directions[randy] == Vector2.down)
+        {
+            pipe = Instantiate(InOutPipe.gameObject, pipe.transform.position + (Vector3)directions[randy]/4, Quaternion.Euler(0,0,90));
+            pipe.GetComponent<PipeFlow>().up = true;
+            //Debug.Log("Pipe Check 2 : " + pipe);
+        }
+        else if (directions[randy] == Vector2.left)
+        {
+            pipe = Instantiate(InOutPipe.gameObject, pipe.transform.position + (Vector3)directions[randy]/4, Quaternion.identity);
+            pipe.GetComponent<PipeFlow>().right = true;
+            //Debug.Log("Pipe Check 3 : " + pipe);
+        }
+        else if (directions[randy] == Vector2.right)
+        {
+            pipe = Instantiate(InOutPipe.gameObject, pipe.transform.position + (Vector3)directions[randy]/4, Quaternion.Euler(0,0,180));
+            pipe.GetComponent<PipeFlow>().left = true;
+            //Debug.Log("Pipe Check 4 : " + pipe);
+        }
+
+        pipe.GetComponent<Pipe>().HasPlaced = true;
+        //Debug.Log("Pipe Check Fin : " + pipe);
     }
 }
 
