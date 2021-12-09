@@ -20,14 +20,9 @@ public class MenuScene : MonoBehaviour
 
     public int panelLevelPosition, panelShopPosition, panelSettingPosition;
 
-    [SerializeField]private Transform[] purchasable;
-
     private Vector3 desiredMenuPosition;
 
-    public TextMeshProUGUI wrenchDisplay, bluePrintDisplay;
-    public int wrench,bluePrint;
-    public int wrenchPerClick, bluePrintPerClick;
-
+   
     private void Start() 
     {
         SetCameraTo(Manager.Instance.menuFocus);
@@ -52,16 +47,6 @@ public class MenuScene : MonoBehaviour
     {
         if(ShopPanel == null)
             Debug.Log("It working I think");
-        
-        int i = 0;
-        foreach (Transform t in purchasable)
-        {
-            int currentIndex = i;
-
-            Button b = t.GetComponent<Button>();
-            b.onClick.AddListener(() => OnWrenchSelect(currentIndex));
-            i++;
-        }   
     }
 
     public void levelSelect(int level)//Apply this to specific level for the next level
@@ -147,10 +132,6 @@ public class MenuScene : MonoBehaviour
     private void OnWrenchSelect(int currentIndex)
     {
         Debug.Log("Slected item " + currentIndex);
-
-        wrench += wrenchPerClick;
-        wrenchDisplay.text = ""+ wrench;
-
     }
 
     //Button Section to switch canvese 
