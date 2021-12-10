@@ -842,6 +842,7 @@ GameObject:
   - component: {fileID: 859099444}
   - component: {fileID: 859099443}
   - component: {fileID: 859099446}
+  - component: {fileID: 859099447}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -915,6 +916,19 @@ MonoBehaviour:
   - {fileID: 394994208}
   - {fileID: 1574006750}
   - {fileID: 509294516}
+--- !u!114 &859099447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859099442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0afb1d9190693847b2ce538f0f855ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelIndex: 2
 --- !u!1 &1022911348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,7 +1158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: -742.75}
+  m_AnchoredPosition: {x: 188, y: -756}
   m_SizeDelta: {x: 195.68, y: 226.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1478874788
@@ -1278,7 +1292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -251, y: 168}
+  m_AnchoredPosition: {x: -247, y: 158}
   m_SizeDelta: {x: 600.68, y: 226.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1484258674
@@ -1353,7 +1367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 286, y: -84}
+  m_AnchoredPosition: {x: 304, y: -84}
   m_SizeDelta: {x: 510.72, y: 109.3778}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1550907950
@@ -1493,8 +1507,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 413, y: 158}
-  m_SizeDelta: {x: 214.6, y: 124.29999}
+  m_AnchoredPosition: {x: 420, y: 154.73999}
+  m_SizeDelta: {x: 212.53, y: 123.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1681704219
 MonoBehaviour:
@@ -1548,6 +1562,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 859099447}
+        m_TargetAssemblyTypeName: SingleLevel, Assembly-CSharp
+        m_MethodName: PressStarsButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
