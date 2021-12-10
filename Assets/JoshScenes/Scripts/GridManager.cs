@@ -49,7 +49,7 @@ public class GridManager : MonoBehaviour
         {
             GameObject space = Instantiate(GridSpace, new Vector3( StartX + ( SpaceX * (i % Length)), StartY + ( SpaceY * (i / Height))), Quaternion.identity);
             space.gameObject.name = "GridSpace";
-            space.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            space.gameObject.GetComponent<SpriteRenderer>().enabled = enabled;
             SpriteRenderer spriteColour = space.gameObject.GetComponent<SpriteRenderer>();
             if(StartPipe == i)
             {
