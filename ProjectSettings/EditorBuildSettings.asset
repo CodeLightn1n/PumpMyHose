@@ -5,19 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/BazzaScenes/00_PreLoader_00.unity
     guid: 4a91dffc1dc80af4aab324c346a43e04
   - enabled: 1
     path: Assets/BazzaScenes/01_MainMenu_01.unity
     guid: 39cd66d378ba05044b942ceff1a361e4
-  - enabled: 0
-    path: Assets/BazzaScenes/Josh_Testing_Bazza.unity
-    guid: 1a6d85d5dd51f42b1b8d534971b60933
   - enabled: 1
-    path: Assets/JoshScenes/Scenes/Level1.unity
-    guid: aaaa7ae5b64a96f4292400e380005b5a
+    path: Assets/BazzaScenes/02_Level_02.unity
+    guid: eadf64970f9c1ab468a6f8d047503be8
+  - enabled: 1
+    path: Assets/BazzaScenes/03_Level_03.unity
+    guid: b45186b6b71eb234f873d8e0bb0a36b0
+  - enabled: 1
+    path: Assets/BazzaScenes/04_Level_04.unity
+    guid: 881ae588ee57c9044b0fc813034a1dc5
+  - enabled: 1
+    path: Assets/BazzaScenes/05_Level_05.unity
+    guid: d4926200068b8f74baf1beb959c7f5a8
+  - enabled: 1
+    path: Assets/BazzaScenes/06_Level_06.unity
+    guid: c1691625ca8e2524299dc476b84cf7e5
   m_configObjects: {}

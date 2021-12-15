@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelection : MonoBehaviour
 {
+
     [SerializeField] private bool unlocked;//Default value is false;
     public Image unlockImage;
     public GameObject[] stars;
@@ -38,10 +39,23 @@ public class LevelSelection : MonoBehaviour
         if(!unlocked)//MARKER if unclock is false means This level is clocked!
         {
             unlockImage.gameObject.SetActive(true);
+            for(int i = 0; i < stars.Length; i++)
+            {
+                stars[i].gameObject.SetActive(false);
+            }
         }
         else//if unlock is true means This level can play !
         {
             unlockImage.gameObject.SetActive(false);
+            for (int i = 0; i < stars.Length; i++)
+            {
+                stars[i].gameObject.SetActive(true);
+            }
+
+            for(int i = 0; i < PlayerPrefs.GetInt("Lv" + gameObject.name); i++)
+            {
+                stars[i].gameObject.GetComponent<Image>().sprite = starSprite;
+            }
         }
     }
 
@@ -52,5 +66,4 @@ public class LevelSelection : MonoBehaviour
             SceneManager.LoadScene(_LevelName);
         }
     }
-
 }

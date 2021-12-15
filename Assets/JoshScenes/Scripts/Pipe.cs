@@ -9,7 +9,7 @@ public class Pipe : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //placing the pipe to the grid placement
-        if (HasPlaced && collision.gameObject.name == "GridSpace")
+        if(HasPlaced && collision.gameObject.name == "GridSpace")
         {
             this.gameObject.transform.position = collision.gameObject.transform.position;
             //check for parent object
@@ -29,6 +29,10 @@ public class Pipe : MonoBehaviour
             {
                 this.gameObject.tag = "Pipe";
             }
+        }
+        else if(HasPlaced)
+        {
+            Destroy(this.gameObject);
         }
         
 

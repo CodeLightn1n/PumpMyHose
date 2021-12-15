@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI PSIDisplay;
 
-
     GridManager grid;
     int CurrentScene;
     int CurrentPSI;
@@ -37,6 +36,14 @@ public class GameManager : MonoBehaviour
         if(CurrentScene == 4)
         {
             grid.SetGridSize(5,5,1,9,10);
+        }
+        if(CurrentScene == 5)
+        {
+            grid.SetGridSize(5, 5 ,1, 4, 20);
+        }
+        if(CurrentScene == 6)
+        {
+            grid.SetGridSize(5, 5, 1, 2, 15);
         }
         Debug.Log("GameManager's Position : " + transform.position);
     }
@@ -65,7 +72,6 @@ public class GameManager : MonoBehaviour
                 });
                 SceneManager.LoadScene("01_MainMenu_01");
                 Debug.Log("analyticsResult " + analyticsResult);
-                
                 Debug.Log("You have finished the level");
             }
         }
