@@ -33,7 +33,7 @@ public class TouchControls : MonoBehaviour
                 Pipe pipe = hit.transform.gameObject.GetComponent<Pipe>();
                 if (pipe != null && pipe.HasPlaced == false)
                 {
-                    LastSummoned = Instantiate(pipe);
+                    LastSummoned = pipe;
                     InitDrag();
                 }
             }
