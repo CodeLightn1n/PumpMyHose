@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using PSIElements;
+using UnityEngine.Analytics;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI PSIDisplay;
-
 
     GridManager grid;
     int CurrentScene;
@@ -25,7 +25,26 @@ public class GameManager : MonoBehaviour
 
     private void SetGrid()
     {
-        grid.SetGridSize(5, 5, 1, 2, 20);
+        if(CurrentScene == 2)
+        {
+            grid.SetGridSize(5, 5, 1, 2, 20);
+        }
+        if(CurrentScene == 3)
+        {
+            grid.SetGridSize(5, 5, 1, 4, 24);
+        }
+        if(CurrentScene == 4)
+        {
+            grid.SetGridSize(5,5,1,9,10);
+        }
+        if(CurrentScene == 5)
+        {
+            grid.SetGridSize(5, 5 ,1, 4, 20);
+        }
+        if(CurrentScene == 6)
+        {
+            grid.SetGridSize(5, 5, 1, 2, 15);
+        }
         Debug.Log("GameManager's Position : " + transform.position);
     }
 
@@ -34,6 +53,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void StartFlow()
     {
+        string levelName = SceneManager.GetActiveScene().name;
         List<PipeFlow> pipes = new List<PipeFlow>();
         foreach(PipeFlow pipe in GameObject.FindObjectsOfType<PipeFlow>())
         {
@@ -45,6 +65,13 @@ public class GameManager : MonoBehaviour
             if(pipe.gameObject.CompareTag("EndPipe"))
             {
                 //this.gameObject.GetComponent<GameSceneTest>().CompletedLevel();
+                AnalyticsResult analyticsResult = Analytics.CustomEvent("Level Complete", new Dictionary<string,object>
+                {
+                    {"Level", levelName},
+                    {"Time Spent", Time.timeSinceLevelLoad}
+                });
+                SceneManager.LoadScene("01_MainMenu_01");
+                Debug.Log("analyticsResult " + analyticsResult);
                 Debug.Log("You have finished the level");
             }
         }

@@ -41,25 +41,4 @@ public class PurchasedSave : MonoBehaviour
         items.bluePrint +=amount;
         displayBluePrintAmmount();
     }
-
-
-
-   /*
-        int: for wrenches and blueprints for UI
-        Savestate: to save the values
-        Arry[]: Which is a blueprint or Wrench
-        int: How much will they give
-   */
-    
-    /*
-        Method for giving these items once a specific button is pushed
-    */
-
-    /*
-        Method for saving all the wrench and bluepritns the player has
-    */
-
-    /*
-        
-    */
 }

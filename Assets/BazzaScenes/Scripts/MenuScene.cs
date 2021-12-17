@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.Analytics;
 using TMPro;
 
 //Youtube Tutorials Link : https://www.youtube.com/playlist?list=PLLH3mUGkfFCU5D0nT9dsN2-RYh1XjnHgH
@@ -53,7 +54,7 @@ public class MenuScene : MonoBehaviour
 
     private void InitLevel()
     {
-      
+
     }
 
     private void InitSetting()
